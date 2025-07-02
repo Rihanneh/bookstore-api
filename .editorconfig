@@ -1,0 +1,16 @@
+root = true                                   # Dit que c’est le fichier EditorConfig principal (à la racine du projet)
+
+[*]                                           # S’applique à TOUS les fichiers
+end_of_line = lf                              # Saut de ligne Unix/Mac (LF)
+insert_final_newline = true                   # Ajoute une ligne vide à la fin du fichier
+trim_trailing_whitespace = true               # Supprime les espaces ou tabulations inutiles à la fin de chaque ligne
+charset = utf-8                               # Enregistre les fichiers en UTF-8
+indent_style = space                          # Utilise des espaces pour l’indentation (et non \t / tabulation)
+indent_size = 2                               # Indente chaque niveau avec 2 espaces
+
+[*.{js,ts,json}]                              # Pour tous les fichiers .js, .ts, .json
+indent_style = space                          # Toujours avec des espaces (précisé à nouveau ici, au cas où)
+indent_size = 2                               # Toujours 2 espaces
+
+[*.md]                                        # Pour tous les fichiers Markdown (.md)
+trim_trailing_whitespace = false              # Garde les espaces en fin de ligne (utile pour les sauts de ligne Markdown)
