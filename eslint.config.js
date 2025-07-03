@@ -39,7 +39,7 @@ export default [
   },
   // 🧪 AJOUT : Configuration Jest spécifique
   {
-    files: ["**/__tests__/**/*.test.ts"],
+    files: ["**/__tests__/**/*.test.ts"], 
     languageOptions: {
       globals: {
         describe: "readonly",
