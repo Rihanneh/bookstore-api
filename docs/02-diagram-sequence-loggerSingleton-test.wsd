@@ -1,0 +1,127 @@
+@startuml 02-diagram-sequence-loggerSingleton-test
+
+title 02 diagram sequence loggerSingleton.test
+
+participant "Jest Test Runner" as Jest
+participant "Test Suite" as Test
+participant "LoggerSingleton" as LS
+participant "winston.Logger" as Winston
+
+note over Jest
+  **FRAMEWORK DE TEST**
+  - Jest execute les tests
+  - Supertest pour HTTP
+  - Assertions avec expect()
+end note
+
+== Test 1: Vérification du Pattern Singleton ==
+
+Jest -> Test : run test "should always return same instance"
+activate Test
+
+note right of Test
+  **PHASE GIVEN**
+  - Configuration du contexte
+  - Pas de mocks necessaires
+  - Test direct du comportement
+end note
+
+Test -> LS : getInstance() [premier appel]
+activate LS
+
+note right of LS
+  **PREMIER APPEL**
+  - Creation de l'instance
+  - Configuration des transports
+  - Stockage en static
+end note
+
+LS -> Winston : createLogger(config)
+activate Winston
+
+Winston --> LS : configured logger
+deactivate Winston
+
+LS --> Test : logger1 (nouvelle instance)
+deactivate LS
+
+Test -> LS : getInstance() [deuxième appel]
+activate LS
+
+note right of LS
+  **DEUXIEME APPEL**
+  - Instance existe deja
+  - Retour direct sans creation
+  - Pattern Singleton respecte
+end note
+
+LS --> Test : logger2 (même instance)
+deactivate LS
+
+note right of Test
+  **PHASE THEN**
+  - Verification critique
+  - Egalite de reference
+  - Regle metier validee
+end note
+
+Test -> Test : expect(logger1).toBe(logger2)
+
+note right of Test
+  **CRITIQUE METIER**
+  - Performance garantie
+  - Coherence des logs
+  - Pattern Singleton OK
+end note
+
+Test --> Jest : TEST REUSSI
+deactivate Test
+
+== Test 2: Vérification de la Configuration ==
+
+Jest -> Test : run test "should be configured for production"
+activate Test
+
+Test -> LS : getInstance()
+activate LS
+
+LS --> Test : logger (instance existante)
+deactivate LS
+
+note right of Test
+  **VERIFICATIONS CONFIGURATION**
+  - Nombre de transports
+  - Definition du niveau
+  - Pret pour la production
+end note
+
+Test -> Test : expect(logger.transports).toHaveLength(3)
+
+note right of Test
+  **FONCTIONNEL**
+  - Transport Console
+  - Transport fichier erreurs
+  - Transport fichier combine
+end note
+
+Test -> Test : expect(logger.level).toBeDefined()
+
+note right of Test
+  **CONFIGURATION OK**
+  - Niveau doit etre defini
+  - Pret pour la production
+  - Conforme RGPD
+end note
+
+Test --> Jest : TEST REUSSI
+deactivate Test
+
+note over Jest
+  **RESULTATS DES TESTS**
+  - Toutes les assertions passees
+  - Singleton verifie
+  - Configuration validee
+  - Pret pour la production
+end note
+
+@enduml
