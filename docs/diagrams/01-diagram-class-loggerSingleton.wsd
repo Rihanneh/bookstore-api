@@ -1,0 +1,82 @@
+@startuml 01-diagram-class-loggerSingleton
+
+title 01 diagram class loggerSingleton
+
+class LoggerSingleton {
+    ' Propriété
+    -{static} instance : winston.Logger
+    --
+    ' Constructeur (pour construire un nouvel objet => nouvelle instance avec new LoggerSingleton)
+    -LoggerSingleton()
+    ' Méthode (fonction)
+    +{static} getInstance() : winston.Logger
+}
+
+class "winston.Logger" <<external>> {
+    +level : string
+    +format : LoggerFormat
+    +transports : Transport[]
+    --
+    +info(message: string) : void
+    +error(message: string) : void
+    +warn(message: string) : void
+    +debug(message: string) : void
+}
+
+class DailyRotateFile <<external>> {
+    +filename : string
+    +datePattern : string
+    +level : string
+    +zippedArchive : boolean
+    +maxSize : string
+    +maxFiles : string
+}
+
+
+class "winston.transports.Console" <<external>>
+
+' RELATIONS UML
+' Composition winston.Logger ne peux pas exister sans LoggerSingleton
+LoggerSingleton *-- "winston.Logger" : owns
+
+' Agrégation Les transports peuvent exister indépendamment du Logger
+
+"winston.Logger" o-- "winston.transports.Console" : uses
+"winston.Logger" o-- DailyRotateFile : uses
+
+' NOTES IMPORTANTES
+note right of LoggerSingleton::getInstance
+  **Singleton Pattern**
+  - Garantit une seule instance
+  - Configuration RGPD :
+    * Erreurs : 30 jours
+    * Audit : 365 jours
+  - Rotation quotidienne
+  - Compression automatique
+end note
+
+note top of LoggerSingleton
+  **RGPD Compliant Logger**
+  - Audit trail : 1 an
+  - Rotation automatique
+  - Compression pour optimisation
+  - Singleton pour performance
+end note
+
+note bottom of DailyRotateFile
+  **Configuration RGPD**
+  - maxFiles: '30d' pour errors
+  - maxFiles: '365d' pour audit
+  - Compression automatique
+  - Rotation quotidienne
+end note
+
+note left of "winston.Logger"
+  **Centralisation des logs**
+  - Interface unique
+  - Multiples transports
+  - Formatage homogène
+  - Niveaux configurables
+end note
+
+@enduml
