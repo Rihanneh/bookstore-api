@@ -1,0 +1,105 @@
+@startuml 03-class-diagram-api-error-singleton
+
+left to right direction
+
+title 03 Class Diagram ApiError avec LoggerSingleton
+
+
+package "Singletons" {
+  class LoggerSingleton {
+    -static instance: LoggerSingleton
+    -logger: winston.Logger
+
+    -constructor()
+    +static getInstance(): LoggerSingleton
+    +error(message: any): void
+    +info(message: any): void
+    +warn(message: any): void
+    +debug(message: any): void
+  }
+}
+
+package "Interfaces" {
+  interface IAdditionalInfo {
+    +readonly [key: string]: unknown
+  }
+}
+
+package "JavaScript Natif" {
+  class Error {
+    +name: string
+    +message: string
+    +stack?: string
+    +constructor(message: string)
+    +{static} captureStackTrace(target: any, constructor: Function): void
+  }
+}
+
+package "Gestion Erreurs Personnalisees" {
+  class ApiError {
+    +readonly statusCode: number
+    +readonly additionalInfo: IAdditionalInfo
+    +readonly timestamp: string
+    -readonly logger: LoggerSingleton
+
+    +constructor(message: string, statusCode: number, additionalInfo?: IAdditionalInfo)
+    +log(): this
+    +toJSON(): Record<string, unknown>
+  }
+}
+
+' Relations d'heritage
+Error <|-- ApiError : extends
+
+' Relations de composition/association
+ApiError --> IAdditionalInfo : uses
+ApiError --> LoggerSingleton : depends on
+
+' Relations de dependance via getInstance
+ApiError ..> LoggerSingleton : <<uses getInstance>>
+
+note right of ApiError
+  **PRINCIPES APPLIQUES**
+  - SOLID: Responsabilite unique
+  - SOLID: Dependency Inversion
+  - KISS: Simple et essentiel
+  - Method Chaining: log() retourne 'this'
+  - Encapsulation: logger en private
+  - Readonly: Proprietes immutables
+  - Singleton: LoggerSingleton.getInstance()
+end note
+
+note right of IAdditionalInfo
+  **INTERFACE FLEXIBLE**
+  - Proprietes readonly
+  - Index signature
+  - Type safety avec unknown
+  - Donnees additionnelles optionnelles
+end note
+
+note right of Error
+  **CLASSE NATIVE JS**
+  - Classe Error integree
+  - Support stack trace
+  - Chainage de constructeurs
+  - captureStackTrace pour debug
+end note
+
+note left of LoggerSingleton
+  **PATTERN SINGLETON**
+  - Instance unique globale
+  - Constructeur prive
+  - Methode getInstance() statique
+  - Encapsule winston.Logger
+  - Gestion centralisee des logs
+end note
+
+note bottom of ApiError
+  **SECURITE RGPD**
+  - toJSON() n'expose pas additionalInfo
+  - Evite les fuites de donnees sensibles
+  - Stack trace uniquement en logs internes
+  - Timestamp pour audit trail
+end note
+
+@enduml
