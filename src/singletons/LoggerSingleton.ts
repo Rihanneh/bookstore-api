@@ -31,11 +31,23 @@ export class LoggerSingleton {
         format: winston.format.combine(
           winston.format.timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
           winston.format.errors({ stack: true }),
-          winston.format.json(),
-          winston.format.colorize()
+          winston.format.printf(({ timestamp, level, message, stack }) => {
+            const stackInfo: string = typeof stack === 'string' ? `\n${stack}` : '';
+            return `[${timestamp}] ${level.toUpperCase()}: ${message} ${stackInfo}`;
+          })
         ),
         transports: [
-          new winston.transports.Console(),
+          new winston.transports.Console({
+            format: winston.format.combine(
+              winston.format.colorize(),
+              winston.format.timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
+              winston.format.errors({ stack: true }),
+              winston.format.printf(({ timestamp, level, message, stack }) => {
+                const stackInfo: string = typeof stack === 'string' ? `\n${stack}` : '';
+                return `[${timestamp}] ${level.toUpperCase()}: ${message} ${stackInfo}`;
+              })
+            )
+          }),
 
           // ERREURS (30 jours, max 10MB par fichier)
           new DailyRotateFile({
