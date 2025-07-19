@@ -1,8 +1,8 @@
-@startuml 03-class-diagram-api-error-singleton
+@startuml 01-class-diagram-api-error-singleton
 
 left to right direction
 
-title 03 Class Diagram ApiError avec LoggerSingleton
+title 01 Class Diagram ApiError avec LoggerSingleton
 
 
 package "Singletons" {

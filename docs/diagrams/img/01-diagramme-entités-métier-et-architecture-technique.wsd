@@ -1,0 +1,83 @@
+@startuml 01- diagramme-entités-métier-et-architecture-technique
+
+
+title Diagramme des entités métier et architecture technique
+
+'======= Entités métier avec cardinalités =======
+package "Domaine métier (Données)" {
+    entity User {
+      +id: string
+      +email: string
+      +hashedPassword: string
+    }
+
+    entity Role {
+      +id: string
+      +name: string
+    }
+
+    entity Order {
+      +id: string
+      +userId: string
+      +total: number
+    }
+
+    ' Associations entre entités métiers
+    User "*" -- "1" Role : "chaque\nUser\n1 rôle"
+    User "1" -- "*" Order : "1 User\nplusieurs Orders"
+
+    note right of Role
+      Un rôle est partagé par plusieurs users.
+      La suppression d'un user ne supprime pas le rôle.
+    end note
+
+    note left of Order
+      Un order est toujours lié à un user.
+      La suppression d'un user entraîne (par contrainte logique applicative)
+      la suppression ou l'archivage de ses orders.
+    end note
+}
+
+note right of User
+  Ceci représente la structure des données métier.
+  Associations entre entités : pas de composition stricte ici.
+end note
+
+'======= Architecture applicative (structure du code) =======
+package "Architecture applicative" {
+    class UserController {
+      +register()
+      +login()
+    }
+
+    class UserService {
+      +createUser()
+      +findUser()
+    }
+
+    class UserRepository {
+      +save()
+      +findById()
+    }
+
+    ' Dépendances entre couches techniques (code)
+    UserController --> UserService : "Appelle le\nservice métier"
+    UserService --> UserRepository : "Accès aux\ndonnées"
+
+    note right of UserController
+      Gère les requêtes HTTP,
+      délègue au service métier.
+    end note
+
+    note right of UserService
+      Règles métier,
+      logique applicative.
+    end note
+}
+
+note right of UserRepository
+  Modélisation des relations techniques
+  entre les composants du code applicatif.
+end note
+
+@enduml

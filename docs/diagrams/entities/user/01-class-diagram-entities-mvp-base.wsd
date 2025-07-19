@@ -1,0 +1,167 @@
+@startuml 01-class-diagram-entities-mvp-base
+
+left to right direction
+
+title 01 Class Diagram Entities MVP - Structure (Colorée)
+
+package "Interfaces" {
+  package "Base" {
+    interface IEntity {
+      +getId(): string
+      +getCreatedAt(): Date
+      +getUpdatedAt(): Date
+    }
+
+    interface IBaseEntityData {
+      +id: string
+      +createdAt?: Date
+      +updatedAt?: Date
+    }
+  }
+
+  package "Métier" {
+    interface IUserData {
+      +id: string
+      +email: string
+      +username: string
+      +role: Role
+      +hashedPassword: string
+      +isActive: boolean
+      +emailVerified: boolean
+      +createdAt?: Date
+      +updatedAt?: Date
+    }
+
+    interface IRoleData {
+      +id: string
+      +name: RoleEnum
+      +createdAt?: Date
+      +updatedAt?: Date
+    }
+  }
+}
+
+package "Enums" {
+  enum RoleEnum {
+    SUPER_ADMIN = "super-admin"
+    ADMIN = "admin"
+    CUSTOMER = "customer"
+    MANAGER = "manager"
+    GUEST = "guest"
+  }
+}
+
+package "Entités" {
+  package "Base" {
+    abstract class BaseEntity {
+      #readonly id: string
+      #readonly createdAt: Date
+      #updatedAt: Date
+
+      +constructor(data: IBaseEntityData)
+      +getId(): string
+      +getCreatedAt(): Date
+      +getUpdatedAt(): Date
+      #updateTimestamp(): void
+    }
+  }
+
+  package "Métier" {
+    entity User {
+      -email: string
+      -username: string
+      -readonly role: Role
+      -#hashedPassword: string
+      -isActive: boolean
+      -emailVerified: boolean
+
+      +constructor(data: IUserData)
+      +getEmail(): string
+      +getUsername(): string
+      +getRole(): Role
+      +getHashedPassword(): string
+      +getIsActive(): boolean
+      +getEmailVerified(): boolean
+      +setEmail(email: string): this
+      +setUsername(username: string): this
+      +setHashedPassword(hashedPassword: string): this
+      +setIsActive(isActive: boolean): this
+      +setEmailVerified(emailVerified: boolean): this
+      +canLogin(): boolean
+      +isAdmin(): boolean
+      +isCustomer(): boolean
+    }
+
+    entity Role {
+      -readonly name: RoleEnum
+
+      +constructor(data: IRoleData)
+      +getName(): RoleEnum
+      +isAdmin(): boolean
+      +isCustomer(): boolean
+    }
+  }
+}
+
+' HÉRITAGE (Rouge - épais)
+IEntity <|.. BaseEntity #line:red;line.bold;text:red : implements
+BaseEntity <|-- User #line:red;line.bold;text:red : extends
+BaseEntity <|-- Role #line:red;line.bold;text:red : extends
+
+' EXTENSION D'INTERFACE (Teal- pointillé)
+IBaseEntityData <|-- IUserData #line:teal;line.dashed;text:teal : extends
+IBaseEntityData <|-- IRoleData #line:teal;line.dashed;text:teal : extends
+
+
+' COMPOSITION (Vert - épais)
+User *-- Role #line:green;line.bold;text:green : composition
+
+' USAGE/DÉPENDANCE (Orange - pointillé)
+BaseEntity ..> IBaseEntityData #line:orange;line.dotted;text:orange : uses
+User ..> IUserData #line:orange;line.dotted;text:orange : uses
+Role ..> IRoleData #line:orange;line.dotted;text:orange : uses
+Role --> RoleEnum #line:orange;line.dotted;text:orange : uses
+
+note as couleurs
+  **LÉGENDE DES COULEURS**
+  Rouge (épais) : Héritage (implements/extends)
+  Teal (pointillé) : Extension d'interface
+  Vert (épais) : Composition (contient)
+  Orange (pointillé) : Usage/Dépendance
+end note
+
+note right of User
+  **ENTITÉ UTILISATEUR**
+  - Composition directe avec Role
+  - Private field #hashedPassword
+  - Method chaining avec setters
+  - Validation métier canLogin()
+  - Readonly role pour sécurité
+  - Délégation vers Role (isAdmin, isCustomer)
+end note
+
+note right of Role
+  **ENTITÉ RÔLE**
+  - Enum RoleEnum pour type safety
+  - Readonly name pour immutabilité
+  - Méthodes utilitaires métier
+  - Logique d'autorisation simple
+end note
+
+note right of BaseEntity
+  **CLASSE ABSTRAITE BASE**
+  - Protected pour héritage
+  - Readonly id et createdAt
+  - updateTimestamp() pour mutations
+  - Constructeur avec données optionnelles
+end note
+
+note left of RoleEnum
+  **ENUM MÉTIER**
+  - Valeurs string explicites
+  - Hiérarchie des permissions
+  - Type safety TypeScript
+  - Extensible pour nouveaux rôles
+end note
+
+@enduml
