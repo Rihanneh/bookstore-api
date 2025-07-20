@@ -11,7 +11,9 @@
       "@/services/*": ["./src/services/*"],
       "@/interfaces/*": ["./src/interfaces/*"],
       "@/singletons/*": ["./src/singletons/*"],
-      "@/exceptions/*": ["./src/exceptions/*"]
+      "@/exceptions/*": ["./src/exceptions/*"],
+      "@/enums/*": ["./src/enums/*"],
+      "@/entities/*": ["./src/entities/*"]
     },
     "resolveJsonModule": true,
     "declaration": true,
