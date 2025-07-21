@@ -79,7 +79,7 @@ export class User extends BaseEntity {
   }
 
   public isAdmin(): boolean {
-    return this.role.isAdmin();
+    return this.role.isAdmin(); 
   }
 
   public isCustomer(): boolean {
