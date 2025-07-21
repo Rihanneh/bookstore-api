@@ -20,7 +20,7 @@ export class User extends BaseEntity {
     this.emailVerified = data.emailVerified ?? false;
   }
 
-  // Getters/accesseur essentiels uniquement
+   // Getters/accesseur essentiels uniquement
   public getEmail(): string {
     return this.email;
   }
