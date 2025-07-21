@@ -1,5 +1,5 @@
 import { LoggerSingleton } from '@/singletons/LoggerSingleton';
-import { IAdditionalInfo } from '@/interfaces/IAdditionalInfo';
+import { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
 
 /**
  * Classe d'erreur API avec winston logging via singleton
