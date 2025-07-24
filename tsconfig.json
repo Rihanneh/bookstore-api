@@ -13,7 +13,8 @@
       "@/singletons/*": ["./src/singletons/*"],
       "@/exceptions/*": ["./src/exceptions/*"],
       "@/enums/*": ["./src/enums/*"],
-      "@/entities/*": ["./src/entities/*"]
+      "@/entities/*": ["./src/entities/*"], 
+      "@/utils/*": ["./src/utils/*"],
     },
     "resolveJsonModule": true,
     "declaration": true,
@@ -33,8 +34,9 @@
     "noUnusedParameters": true,
     "exactOptionalPropertyTypes": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
+    "skipLibCheck": true, 
+    "types": ["vitest/globals"]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "src/**/__tests__/**/*", "coverage"]
+  "include": ["src/**/*", "**/*.test.ts", "vitest.config.js"],
+  "exclude": ["node_modules", "dist", "coverage"]
 }

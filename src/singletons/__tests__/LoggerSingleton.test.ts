@@ -1,4 +1,4 @@
-import { LoggerSingleton } from '../LoggerSingleton';
+import { LoggerSingleton } from '@/singletons/LoggerSingleton';
 
 describe('LoggerSingleton', () => {
   it('should always return same instance (singleton pattern)', () => {

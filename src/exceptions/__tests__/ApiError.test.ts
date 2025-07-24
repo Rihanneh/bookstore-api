@@ -1,4 +1,4 @@
-import { ApiError } from '../ApiError';
+import { ApiError } from '@/exceptions/ApiError';
 
 describe('ApiError', () => {
   it('should create error with message and status code', () => {
