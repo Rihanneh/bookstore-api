@@ -1,9 +1,9 @@
 import { PasswordError } from '@/exceptions/security/PasswordError';
 import { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
-import argon2 from 'argon2';
+import argon2, { Options } from 'argon2';
 
 export class PasswordHasher implements IPasswordHasher {
-  private readonly argonConfig = {
+  private readonly argonConfig: Options = {
     type: argon2.argon2id,
     memoryCost: 2 ** 16, // 64mo
     timeCost: 3,
