@@ -1,15 +1,21 @@
-import app from "./app";
-import dotenv from "dotenv";
+import app from './app';
+import dotenv from 'dotenv';
+import helmet from 'helmet';
+import cookieParser from 'cookie-parser';
 
 // Configuration des environnements
-const environment: string = process.env.NODE_ENV ?? "development";
+const environment: string = process.env.NODE_ENV ?? 'development';
 const envFile: string = `.env.${environment}`;
 
 // Chargement de la configuration
 dotenv.config({ path: envFile });
 
+// Middlewares
+app.use(helmet());
+app.use(cookieParser());
+
 // Configuration du serveur
-const PORT: number = parseInt(process.env.NODE_PORT ?? "3000", 10);
+const PORT: number = parseInt(process.env.PORT ?? '3000', 10);
 
 // Démarrage du serveur
 app.listen(PORT, (): void => {
