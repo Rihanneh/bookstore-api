@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import routes, { routeManager } from '@/router';
 import { IPublicRoutes } from '@/interfaces/http/IPublicRoutes';
-import data from '../data/products.json'
+import data from '../data/products.json';
 import { STATUS_CODES } from 'http';
 
 const app: Express = express();
@@ -21,7 +21,7 @@ app.use(
 //route santé
 app.get('/health', (_req: Request, res: Response): void => {
   res.status(200).json({
-    status: 'ok', 
+    status: 'ok',
     data: data,
     message: 'API is running'
   });
