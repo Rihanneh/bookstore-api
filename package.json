@@ -76,6 +76,7 @@
     "isomorphic-dompurify": "^2.26.0",
     "jose": "^6.0.12",
     "winston": "^3.17.0",
-    "winston-daily-rotate-file": "^5.0.0"
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^4.0.14"
   }
 }
