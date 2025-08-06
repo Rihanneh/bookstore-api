@@ -22,9 +22,8 @@ export default defineConfig({
         'src/tests/**',
         // ✅ Exclude des fichiers sans logique
         'src/entities/**', // Pas de logique
-        'src/enums/**', // Pas de logique
+        'src/constants/**', // Pas de logique
         'src/interfaces/**', // Pas de logique
-        'src/dtos/**', // Juste Zod schemas
         'src/app.ts', // Juste Express setup
         'src/server.ts' // Juste server start
       ],
@@ -45,9 +44,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@/services': path.resolve(__dirname, './src/services'),
       '@/interfaces': path.resolve(__dirname, './src/interfaces'),
-      '@/singletons': path.resolve(__dirname, './src/singletons'),
+      '@/configs': path.resolve(__dirname, './src/configs'),
       '@/exceptions': path.resolve(__dirname, './src/exceptions'),
-      '@/enums': path.resolve(__dirname, './src/enums'),
+      '@/constants': path.resolve(__dirname, './src/constants'),
       '@/entities': path.resolve(__dirname, './src/entities'),
       '@/utils': path.resolve(__dirname, './src/utils')
     }

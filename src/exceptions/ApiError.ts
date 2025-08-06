@@ -1,4 +1,4 @@
-import { LoggerSingleton } from '@/singletons/LoggerSingleton';
+import { LoggerSingleton } from '@/configs/LoggerSingleton';
 import { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
 
 /**

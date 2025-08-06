@@ -1,4 +1,4 @@
-import { RoleEnum } from '@/enums/RoleEnum';
+import { RoleEnum } from '@/constants/enums/RoleEnum';
 import { BaseEntity } from '@/entities/BaseEntity';
 import { IRoleData } from '@/interfaces/entities/user/IRoleData';
 
