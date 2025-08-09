@@ -1,5 +1,5 @@
 export interface IEntity {
-  getId(): string | number;
+  getId(): string;
   getCreatedAt(): Date;
   getUpdatedAt(): Date;
 }
