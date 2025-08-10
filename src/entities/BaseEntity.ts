@@ -1,3 +1,4 @@
+// src/entities/BaseEntity.ts
 import { IBaseEntityData } from '@/interfaces/entities/IBaseEntityData';
 import { IEntity } from '@/interfaces/entities/IEntity';
 
@@ -12,7 +13,7 @@ import { IEntity } from '@/interfaces/entities/IEntity';
  * RGPD: Les timestamps permettent la traçabilité légale
  */
 export abstract class BaseEntity implements IEntity {
-  protected readonly id: string | number;
+  protected readonly id: string;
   protected readonly createdAt: Date;
   protected updatedAt: Date;
 
@@ -21,7 +22,8 @@ export abstract class BaseEntity implements IEntity {
     this.createdAt = data.createdAt ?? new Date();
     this.updatedAt = data.updatedAt ?? new Date();
   }
-  public getId(): string | number {
+
+  public getId(): string {
     return this.id;
   }
 
