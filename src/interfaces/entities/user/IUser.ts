@@ -1,5 +1,5 @@
-import { RoleEnum } from '@/constants/enums/RoleEnum';
-import { IEntity } from '../IEntity';
+import type { RoleEnum } from '@/constants/enums/RoleEnum';
+import type { IEntity } from '../IEntity';
 
 export interface IUser extends IEntity {
   getEmail(): string;

@@ -1,13 +1,13 @@
 import { RoleEnum } from '@/constants/enums/RoleEnum';
-import { CreateUserDto } from '@/dtos/user/CreateUserDto';
-import { User } from '@/entities/User';
+import type { CreateUserDto } from '@/dtos/user/CreateUserDto';
+import type { User } from '@/entities/User';
 import { ConflictErrorFactory } from '@/exceptions/ConflictErrorFactory';
 import { UserErrorFactory } from '@/exceptions/entities/UserErrorFactory';
-import { IUser } from '@/interfaces/entities/user/IUser';
-import { IUserData } from '@/interfaces/entities/user/IUserData';
-import { IUserRepository } from '@/interfaces/repositories/IUserRepository';
-import { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
-import { IAuthService } from '@/interfaces/services/IAuthService';
+import type { IUser } from '@/interfaces/entities/user/IUser';
+import type { IUserData } from '@/interfaces/entities/user/IUserData';
+import type { IUserRepository } from '@/interfaces/repositories/IUserRepository';
+import type { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
+import type { IAuthService } from '@/interfaces/services/IAuthService';
 
 export class AuthService implements IAuthService {
   constructor(

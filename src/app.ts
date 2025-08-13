@@ -1,7 +1,7 @@
-import express, { Express } from 'express';
 import cors from 'cors';
+import express, { type Express } from 'express';
+import type { IPublicRoutes } from '@/interfaces/http/IPublicRoutes';
 import routes, { routeManager } from '@/router';
-import { IPublicRoutes } from '@/interfaces/http/IPublicRoutes';
 
 const app: Express = express();
 

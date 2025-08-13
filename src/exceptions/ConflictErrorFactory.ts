@@ -1,6 +1,6 @@
 // src/exceptions/ConflictErrorFactory.ts
 import { ApiError } from '@/exceptions/ApiError';
-import { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
+import type { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
 
 /**
  * Factory d'erreurs spécialisée pour les conflits de données
@@ -28,7 +28,7 @@ export class ConflictErrorFactory extends ApiError {
       conflictField: 'email',
       conflictType: 'duplicate_email',
       // RGPD: email hashé pour les logs, pas stocké en clair
-      emailHash: email ? email.substring(0, 3) + '***' : 'unknown'
+      emailHash: email ? `${email.substring(0, 3)}***` : 'unknown'
     });
   }
 
@@ -42,7 +42,7 @@ export class ConflictErrorFactory extends ApiError {
       conflictField: 'username',
       conflictType: 'duplicate_username',
       // RGPD: username partiel pour les logs
-      usernameHash: username ? username.substring(0, 2) + '***' : 'unknown'
+      usernameHash: username ? `${username.substring(0, 2)}***` : 'unknown'
     });
   }
 
@@ -60,7 +60,7 @@ export class ConflictErrorFactory extends ApiError {
       conflictType: 'duplicate_resource',
       resourceType,
       // RGPD: Valeur partielle pour les logs
-      partialValue: value ? value.substring(0, 3) + '***' : 'unknown'
+      partialValue: value ? `${value.substring(0, 3)}***` : 'unknown'
     });
   }
 

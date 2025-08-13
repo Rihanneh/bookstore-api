@@ -1,5 +1,5 @@
 import { ApiError } from '@/exceptions/ApiError';
-import { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
+import type { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
 
 /**
  * Factory d'erreurs spécialisée pour les opérations utilisateur

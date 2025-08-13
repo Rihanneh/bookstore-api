@@ -1,14 +1,14 @@
-import { AuthController } from '@/controllers/AuthController';
-import { IPublicRoutes, IRouteManager } from '@/interfaces/http';
-import { IUserRepository } from '@/interfaces/repositories/IUserRepository';
-import { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
-import { IAuthService } from '@/interfaces/services/IAuthService';
 import { Router } from 'express';
-import { PublicRoutes } from './PublicRoutes';
-import { AuthService } from '@/services/AuthService';
+import { AuthController } from '@/controllers/AuthController';
+import type { IPublicRoutes, IRouteManager } from '@/interfaces/http';
+import type { IUserRepository } from '@/interfaces/repositories/IUserRepository';
+import type { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
+import type { IAuthService } from '@/interfaces/services/IAuthService';
 import { MockUserRepository as UserRepository } from '@/repositories/MockUserRepository';
-import { PasswordHasher } from '@/utils/PasswordHasher';
+import { AuthService } from '@/services/AuthService';
 import HandlerService from '@/services/http/handlerService';
+import { PasswordHasher } from '@/utils/PasswordHasher';
+import { PublicRoutes } from './PublicRoutes';
 
 /**
  * Gestionnaire de routes

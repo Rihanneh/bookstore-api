@@ -1,7 +1,7 @@
-import { IUserData } from '@/interfaces/entities/user/IUserData';
-import { BaseEntity } from './BaseEntity';
 import { RoleEnum } from '@/constants/enums/RoleEnum';
-import { IUser } from '@/interfaces/entities/user/IUser';
+import type { IUser } from '@/interfaces/entities/user/IUser';
+import type { IUserData } from '@/interfaces/entities/user/IUserData';
+import { BaseEntity } from './BaseEntity';
 
 export class User extends BaseEntity {
   private email: string;

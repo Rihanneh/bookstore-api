@@ -1,5 +1,5 @@
-import { RoleEnum } from '@/constants/enums/RoleEnum';
-import { IBaseEntityData } from '../IBaseEntityData';
+import type { RoleEnum } from '@/constants/enums/RoleEnum';
+import type { IBaseEntityData } from '../IBaseEntityData';
 
 export interface IUserData extends IBaseEntityData {
   email: string;

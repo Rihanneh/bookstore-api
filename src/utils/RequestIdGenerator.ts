@@ -1,5 +1,5 @@
-import { Request } from 'express';
 import crypto from 'node:crypto';
+import type { Request } from 'express';
 /**
  * Générateur de Request ID pour traçabilité
  * KISS: Simple et efficace
@@ -27,6 +27,6 @@ export class RequestIdGenerator {
       return requestId.trim();
     }
 
-    return this.generate();
+    return RequestIdGenerator.generate();
   }
 }

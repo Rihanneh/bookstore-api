@@ -1,13 +1,13 @@
+import type { NextFunction, Request, Response } from 'express';
 import { LoggerSingleton } from '@/configs/LoggerSingleton';
 import { CreateUserDto } from '@/dtos/user/CreateUserDto';
 import { ResponseUserDto } from '@/dtos/user/ResponseUserDto';
-import { IAuthController } from '@/interfaces/controllers/IAuthController';
-import { IUser } from '@/interfaces/entities/user/IUser';
-import { IApiResponseData } from '@/interfaces/http/IApiResponseData';
-import { IAuthService } from '@/interfaces/services/IAuthService';
+import type { IAuthController } from '@/interfaces/controllers/IAuthController';
+import type { IUser } from '@/interfaces/entities/user/IUser';
+import type { IApiResponseData } from '@/interfaces/http/IApiResponseData';
+import type { IAuthService } from '@/interfaces/services/IAuthService';
 import { ApiResponseFactory } from '@/utils/ApiResponseFactory';
 import { RequestIdGenerator } from '@/utils/RequestIdGenerator';
-import { Response, Request, NextFunction } from 'express';
 
 export class AuthController implements IAuthController {
   private readonly authService: IAuthService;

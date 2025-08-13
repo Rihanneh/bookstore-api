@@ -1,7 +1,7 @@
-import app from './app';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
-import cookieParser from 'cookie-parser';
+import app from './app';
 
 // Configuration des environnements
 const environment: string = process.env.NODE_ENV ?? 'development';

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, RequestHandler } from 'express';
+import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
 /**
  * Interface pour le service de gestion des handlers

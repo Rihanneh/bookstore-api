@@ -1,5 +1,5 @@
-import { PasswordHasher } from '@/utils/PasswordHasher';
 import { PasswordError } from '@/exceptions/security/PasswordError';
+import { PasswordHasher } from '@/utils/PasswordHasher';
 
 describe('PasswordHasher', () => {
   const passwordHasher = new PasswordHasher();

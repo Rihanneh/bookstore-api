@@ -1,4 +1,4 @@
-import { IRouteManager } from '@/interfaces/http/IRouteManager';
+import type { IRouteManager } from '@/interfaces/http/IRouteManager';
 import { RouteManagerSingleton as RouteManager } from '@/router/RouteManagerSingleton';
 
 /**

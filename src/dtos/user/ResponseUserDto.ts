@@ -1,6 +1,6 @@
-import { RoleEnum } from '@/constants/enums/RoleEnum';
-import { ResponseUserSchemaType, UserConstants } from '@/constants/zod/UserConstants';
-import { IUser } from '@/interfaces/entities/user/IUser';
+import type { RoleEnum } from '@/constants/enums/RoleEnum';
+import { type ResponseUserSchemaType, UserConstants } from '@/constants/zod/UserConstants';
+import type { IUser } from '@/interfaces/entities/user/IUser';
 
 export class ResponseUserDto {
   public readonly id: string;

@@ -1,4 +1,4 @@
-import { IPublicRoutes } from '@/interfaces/http/IPublicRoutes.js';
+import type { IPublicRoutes } from '@/interfaces/http/IPublicRoutes.js';
 
 /**
  * Implémentation concrète des routes publiques

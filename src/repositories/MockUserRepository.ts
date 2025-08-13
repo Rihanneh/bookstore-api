@@ -1,6 +1,6 @@
 import { User } from '@/entities/User';
-import { IUserData } from '@/interfaces/entities/user/IUserData';
-import { IUserRepository } from '@/interfaces/repositories/IUserRepository';
+import type { IUserData } from '@/interfaces/entities/user/IUserData';
+import type { IUserRepository } from '@/interfaces/repositories/IUserRepository';
 
 export class MockUserRepository implements IUserRepository {
   private users: User[] = [];

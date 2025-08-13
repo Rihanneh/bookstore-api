@@ -1,5 +1,5 @@
-import { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
 import { ApiError } from '@/exceptions/ApiError';
+import type { IAdditionalInfo } from '@/interfaces/security/IAdditionalInfo';
 
 /**
  * Erreur spécialisée pour les opérations de mot de passe

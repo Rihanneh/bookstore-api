@@ -1,4 +1,4 @@
-import { BaseEntity } from '@/entities/BaseEntity';
+import type { BaseEntity } from '@/entities/BaseEntity';
 
 export interface IBaseRepository<T extends BaseEntity, TData = unknown> {
   findById(id: string): Promise<T | null>;

@@ -1,4 +1,4 @@
-import { IApiResponseData } from '@/interfaces/http/IApiResponseData';
+import type { IApiResponseData } from '@/interfaces/http/IApiResponseData';
 
 export class ApiResponseFactory {
   private static generateMeta(requestId?: string): { timestamp: string; requestId?: string } {
@@ -14,7 +14,7 @@ export class ApiResponseFactory {
       success: true,
       message,
       ...(data !== undefined && { data }), // Spread conditionnel PRO
-      meta: this.generateMeta(requestId)
+      meta: ApiResponseFactory.generateMeta(requestId)
     };
     return response;
   }
@@ -36,7 +36,7 @@ export class ApiResponseFactory {
       success: false,
       message,
       error: errorObject,
-      meta: this.generateMeta(requestId)
+      meta: ApiResponseFactory.generateMeta(requestId)
     };
     return response;
   }
@@ -61,7 +61,7 @@ export class ApiResponseFactory {
       message,
       data, // data obligatoire ici (T[] jamais undefined)
       meta: {
-        ...this.generateMeta(requestId),
+        ...ApiResponseFactory.generateMeta(requestId),
         pagination: paginationInfo
       }
     };

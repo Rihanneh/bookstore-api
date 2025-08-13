@@ -1,4 +1,4 @@
-import { UserConstants, CreateUserSchemaType } from '@/constants/zod/UserConstants';
+import { type CreateUserSchemaType, UserConstants } from '@/constants/zod/UserConstants';
 
 export class CreateUserDto {
   public readonly email: string; // immuable

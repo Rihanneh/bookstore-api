@@ -1,4 +1,4 @@
-import { ITokenPayload } from '@/interfaces/security/ITokenPayload';
+import type { ITokenPayload } from '@/interfaces/security/ITokenPayload';
 
 export interface ITokenManager {
   generateAccessToken(payload: ITokenPayload): Promise<string>;

@@ -1,6 +1,6 @@
 // src/entities/BaseEntity.ts
-import { IBaseEntityData } from '@/interfaces/entities/IBaseEntityData';
-import { IEntity } from '@/interfaces/entities/IEntity';
+import type { IBaseEntityData } from '@/interfaces/entities/IBaseEntityData';
+import type { IEntity } from '@/interfaces/entities/IEntity';
 
 /**
  * Classe abstraite de base pour toutes les entités métier

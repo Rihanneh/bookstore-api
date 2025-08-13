@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import { IPublicRoutes } from '@/interfaces/http/IPublicRoutes';
+import type { Router } from 'express';
+import type { IPublicRoutes } from '@/interfaces/http/IPublicRoutes';
 
 /**
  * Interface pour le gestionnaire de routes

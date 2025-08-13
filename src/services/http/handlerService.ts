@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction, RequestHandler } from 'express';
-import { IHandlerService } from '@/interfaces/http/IHandlerService';
+import type { NextFunction, Request, RequestHandler, Response } from 'express';
+import type { IHandlerService } from '@/interfaces/http/IHandlerService';
 
 /**
  * Service de gestion des handlers asynchrones

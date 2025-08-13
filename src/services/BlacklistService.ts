@@ -1,4 +1,4 @@
-import { IBlacklistService } from '@/interfaces/security/IBlacklistService';
+import type { IBlacklistService } from '@/interfaces/security/IBlacklistService';
 
 export class BlacklistService implements IBlacklistService {
   static #instance: BlacklistService;

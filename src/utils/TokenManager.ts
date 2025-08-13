@@ -1,7 +1,7 @@
-import { TokenError } from '@/exceptions/security/TokenError';
-import { ITokenManager } from '@/interfaces/security/ITokenManager';
-import { ITokenPayload } from '@/interfaces/security/ITokenPayload';
 import { errors, jwtVerify, SignJWT } from 'jose';
+import { TokenError } from '@/exceptions/security/TokenError';
+import type { ITokenManager } from '@/interfaces/security/ITokenManager';
+import type { ITokenPayload } from '@/interfaces/security/ITokenPayload';
 
 export class TokenManager implements ITokenManager {
   readonly #secret: Uint8Array;

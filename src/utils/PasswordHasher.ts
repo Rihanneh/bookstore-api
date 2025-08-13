@@ -1,6 +1,6 @@
+import argon2, { type Options } from 'argon2';
 import { PasswordError } from '@/exceptions/security/PasswordError';
-import { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
-import argon2, { Options } from 'argon2';
+import type { IPasswordHasher } from '@/interfaces/security/IPasswordHasher';
 
 export class PasswordHasher implements IPasswordHasher {
   private readonly argonConfig: Options = {
