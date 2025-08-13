@@ -44,7 +44,7 @@
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.1.0",
+    "@types/node": "^24.2.1",
     "@types/pg-promise": "^0.0.28",
     "@types/supertest": "^6.0.3",
     "@vitest/coverage-v8": "^3.2.4",
